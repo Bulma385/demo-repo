@@ -1,0 +1,6 @@
+hi
+neue file
+(status)
+add
+commit 
+push
