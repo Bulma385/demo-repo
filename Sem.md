@@ -1,8 +1,7 @@
 # Survey Paper
 Title:
 Abstract:
-## Introduction:
-(15%)
+## Introduction (15%):
 ### relevant definitions for the topic:
 Token:
 Entity:
@@ -16,10 +15,10 @@ Accumulating better data sets: larger and rather database-like data than web-tab
 
 ## Main Part (75%):
 ### Related Work:
-#### Classification of RW:
-bla
-####Discussion if the approaches:
-bla
+#### Classification of RW & Discussion of the approaches:
+##### 1) Data:
+asmd
+##### 2) Model Architecture and Pretraining:
 
 classification of existing research
 Core idea/concept
