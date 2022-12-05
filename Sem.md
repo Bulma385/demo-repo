@@ -30,6 +30,14 @@ Data:
 - ! (recent for TURL) pretraining on Web tables [21,45]
 - benchmarks?
 
+2) TaBERT:
+- previous work on joint representation learning of NL utterances and structured data
+(Bogin 2019b, Wang 2019a)
+- with BERT for DB but no pretraining (Guo 2019, Zhang 2019, Hwang 2019) 
+
+
+3) GitTables:
+
 ### Classification of RW & Discussion of the approaches:
 #### Data:
 1) TURL: 570k relational Web tables from Wikipedia
@@ -51,15 +59,13 @@ Approach: Contextualized representation learning using unsupervised pretraining 
 - Transformer (e.g. BERT) -> row-wise encoding vectors 
 - series of vertical self-attention layers -> utterance and column representations
 ##### 3) GitTables:
-No new architecture, just data set?
+No new architecture, just data set.
 
-classification of existing research
-Core idea/concept
-model architectures: Table comparing approaches (folie 29, workshop)
-pretraining approaches
-fine tuning
-Evaluation environment: experiments and benchmarks, different goals, more powerful?
-results
+#### Fine-tuning:
 
-Conclusion & Outlook:
+#### Evaluation (Experiments, Benchmarks, goals):
+
+
+
+## Conclusion & Outlook:
 (10%)
