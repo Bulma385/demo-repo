@@ -34,13 +34,15 @@ Data:
 - previous work on joint representation learning of NL utterances and structured data
 (Bogin 2019b, Wang 2019a)
 - with BERT for DB but no pretraining (Guo 2019, Zhang 2019, Hwang 2019) 
-
+- 
 
 3) GitTables:
 
 ### Classification of RW & Discussion of the approaches:
 #### Data:
 1) TURL: 570k relational Web tables from Wikipedia
+2) TaBERT: parallel corpus of 26 million (semi-)structured web tabels and english paragraphs from Wikipedia and WDC WebTable Copus (Lehmberg 2016, from CommonCrawl), aggressive cleaning used, (sub-tokenization using Wordpiece tokenizer shipped with BERT?)
+
 #### Model Architecture and Pretraining:
 ##### 1) TURL:
 The model architecture consists of 3 modules:
@@ -54,6 +56,16 @@ Approach: Contextualized representation learning using unsupervised pretraining 
 - MLM (Masked Language Model) from BERT
 
 ##### 2) TaBERT:
+Approach: 
+- on top of BERT
+- learn contextualized representation of both natural language utterances and structured data
+- linearize table content
+- Pretraining: 
+    - MLM for NL representations
+    - MCP (Masked Column Prediction) objective: recover column information from context
+    - CVR (Cell Value Recovery) obj.: 
+
+
 - Create content snapshot of table based on input utterance
 - concat with input utterance 
 - Transformer (e.g. BERT) -> row-wise encoding vectors 
@@ -64,7 +76,12 @@ No new architecture, just data set.
 #### Fine-tuning:
 
 #### Evaluation (Experiments, Benchmarks, goals):
-
+Goals: 
+TaBERT: 
+- can be general-purpose encoder (for e.g. neural semantic parser)("drop-in replacement of parser's original encoder")
+Benchmarks/ Evaluation metrics:
+- (1) "Spider" text-to-SQL dataset (Yu 2018c)(only competetively)
+- (2) WikiTableQuestions (Pasupat and Liang 2015)(new state of art)
 
 
 ## Conclusion & Outlook:
