@@ -38,11 +38,17 @@ Data:
 
 3) GitTables:
 
+Others:
+- Bogin 2019 ("Representing Schema Structure with Graph Neural Networks for Text-to-SQL Parsing") (2019th state-of-art)
+- Wang 2019 ("TabFact: A Large-scale Dataset for Table-based Fact Verification") (still far from human performance)
+- Hwang 2019 ("A Comprehensive Exploration on WikiSQL with Table-Aware Word Contextualization") (first to beat human performance on wikisql dataset)
+
 ### Classification of RW & Discussion of the approaches:
 #### Data:
 1) TURL: 570k relational Web tables from Wikipedia
 2) TaBERT: parallel corpus of 26 million (semi-)structured web tabels and english paragraphs from Wikipedia and WDC WebTable Copus (Lehmberg 2016, from CommonCrawl), aggressive cleaning used, (sub-tokenization using Wordpiece tokenizer shipped with BERT?)
-
+3) GitTables
+4) SPIDER text-to-sql (zero-shot)
 #### Model Architecture and Pretraining:
 ##### 1) TURL:
 The model architecture consists of 3 modules:
@@ -70,6 +76,7 @@ Approach:
 - concat with input utterance 
 - Transformer (e.g. BERT) -> row-wise encoding vectors 
 - series of vertical self-attention layers -> utterance and column representations
+
 ##### 3) GitTables:
 No new architecture, just data set.
 
