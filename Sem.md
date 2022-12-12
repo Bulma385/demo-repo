@@ -30,13 +30,20 @@ Data:
 - ! (recent for TURL) pretraining on Web tables [21,45]
 - benchmarks?
 
-2) TaBERT:
+2) TaBERT: (Yin 2020)
 - previous work on joint representation learning of NL utterances and structured data
 (Bogin 2019b, Wang 2019a)
 - with BERT for DB but no pretraining (Guo 2019, Zhang 2019, Hwang 2019) 
 - 
 
 3) GitTables:
+
+4) TABBIE ("TABular Information Embedding) (2021):
+- cometetive or better than TaBERT
+- TaBERT or TaPas more comp expensive because of longer sequences
+- repurpose ELEKCTRA's objective function (Clark 2020)
+
+() 5) TaPas:(Herzig 2020) concat tabular data with text like TaBERT
 
 Others:
 - Bogin 2019 ("Representing Schema Structure with Graph Neural Networks for Text-to-SQL Parsing") (2019th state-of-art)
@@ -80,6 +87,22 @@ Approach:
 ##### 3) GitTables:
 No new architecture, just data set.
 
+##### 4) TABBIE:
+Approach:
+- Problem: joint pretraining with tabular data and text (e.g. question answering) -> underperforming on task with only tables (e.g. cell population)
+- provide embeddings of all substructures (cells,rows,columns)
+- pretraining objective ("Corrupt Cell Detection") from ELEKTRA (Clark 2020): binary classifier as final layer (corrupted or not)
+- reduce sequence length by architecture
+- produce representations of cells x_ij, rows r_i, columns c_j mor accessable through architecture
+
+Architecture:
+- 2 Transformers: one for row, one for columns
+- pooling both representations after each layer
+1. fixed BERT model for out-of-context representations of each cell individually
+2. add learned positional embeddings (one for row, one for column)
+-> initialization of x_ij
+3. contextualize embeddings: row-wise & column-wise with respective Transformers, then fuse them by averaging
+
 #### Fine-tuning:
 
 #### Evaluation (Experiments, Benchmarks, goals):
@@ -89,6 +112,8 @@ TaBERT:
 Benchmarks/ Evaluation metrics:
 - (1) "Spider" text-to-SQL dataset (Yu 2018c)(only competetively)
 - (2) WikiTableQuestions (Pasupat and Liang 2015)(new state of art)
+TABBIE:
+- comparison with TaBERT (even with same training data?)
 
 
 ## Conclusion & Outlook:
