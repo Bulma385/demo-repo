@@ -92,6 +92,7 @@ Approach:
 - Problem: joint pretraining with tabular data and text (e.g. question answering) -> underperforming on task with only tables (e.g. cell population)
 - provide embeddings of all substructures (cells,rows,columns)
 - pretraining objective ("Corrupt Cell Detection") from ELEKTRA (Clark 2020): binary classifier as final layer (corrupted or not)
+   -> turns out no need for seperate corrupted candidates generator model, intra/table corruption strategies sufficient
 - reduce sequence length by architecture
 - produce representations of cells x_ij, rows r_i, columns c_j mor accessable through architecture
 
@@ -102,6 +103,7 @@ Architecture:
 2. add learned positional embeddings (one for row, one for column)
 -> initialization of x_ij
 3. contextualize embeddings: row-wise & column-wise with respective Transformers, then fuse them by averaging
+(4. [CLS] tokens for rows and columns [CLSROW], [CLSCOL])
 
 #### Fine-tuning:
 
