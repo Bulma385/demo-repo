@@ -107,6 +107,13 @@ Architecture:
 
 #### Fine-tuning:
 
+TABBIE:
+- 3 tasks: column population, row population, column type prediction
+- Strategy: use final layer representaions, i.e. final row and column representaions and place classification layer on top of the relevant one 
+- task-specific hyperparameters
+- backpropagate error to ALL model parameters (no "freeze")
+- Column Population: Multi-Label Classification (Zhang and Balog 2017 dataset, 1.6M wiki tables with 130k possible header labels) state-of-art
+
 #### Evaluation (Experiments, Benchmarks, goals):
 Goals: 
 TaBERT: 
@@ -114,8 +121,11 @@ TaBERT:
 Benchmarks/ Evaluation metrics:
 - (1) "Spider" text-to-SQL dataset (Yu 2018c)(only competetively)
 - (2) WikiTableQuestions (Pasupat and Liang 2015)(new state of art)
-TABBIE:
-- comparison with TaBERT (even with same training data?)
+
+TABBIE comparison with TaBERT (even with same training data?): 
+- table showing comparison (outperforms everywhere but few exceptions)
+- but NOT tested for table-and-text tasks! -> maybe architecture only suited for tested tasks! -> future work
+
 
 
 ## Conclusion & Outlook:
