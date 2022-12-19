@@ -131,3 +131,43 @@ TABBIE comparison with TaBERT (even with same training data?):
 ## Conclusion & Outlook:
 (10%)
 dcwc
+
+"Table Pre-training: A Survey on Model Architectures, Pre-training Objectives, and
+Downstream Tasks":
+Introduction:
+state-of-art (SOTA) of downstream tasks:
+table type classification [Wang et al., 2021c], cell
+type classification [Gol et al., 2019; Wang et al., 2020], table question answering (QA) [Herzig et al., 2020; Yin et al.,
+2020], table search [Wang et al., 2021b], entity linking [Deng
+et al., 2020], column type identification [Chen et al., 2019a;
+Guo et al., 2020], table augmentation [Deng et al., 2020;
+Iida et al., 2021], formula prediction [Cheng et al., 2021a]
+
+Trend from Table2Vec, CNNs, RNNs, GNNs, LSTMs to Transormer based models.
+
+Neural networks:
+- TaBERT SOTA QA
+- TaPas end-to-end table-text joint reasoning ?
+- TURL
+- TUTA tree-based attention & tree-based positional encoding SOTA on 5 different tasks
+- TaPEx neural SQL executer
+- UnifiedSKG ?
+
+Datasets:
+2.4 Existing Large Table Corpus
+Web Tables Large corpora include WDC Web Table Corpus 1
+(233M tables), Dresden Web Tables Corpus [Eberius et
+al., 2015] (174M tables), WebTables [Cafarella et al., 2008]
+(154M tables), and WikiTables (1.6M tables). More details are
+summarized by [Zhang and Balog, 2020].
+Spreadsheet Tables FUSE [Barik et al., 2015] included
+249,376 web-crawled spreadsheets. [Chen and Cafarella, 2013]
+obtained 410,554 Excel files from 51,252 Internet domains
+TUTA [Wang et al., 2021c] collected 13.5 million spreadsheet
+files from 1.75 million web sites.
+CSV Tables GitTables[Hulsebos et al., 2021] collected 1M+
+tables from CSV files in GitHub repositories. Tables in GitTables are found to resemble typical database tables.
+Other Kinds of Tables TableArXiv 2
+contains 341,573 tables extracted from scientific publications on arxiv.org
+
+
