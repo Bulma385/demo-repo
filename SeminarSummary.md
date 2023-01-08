@@ -5,6 +5,7 @@ important topics: sequence serialization, input embedding, encoding decoding arc
 ## Abstract
 
 after success of transformers for NLP -> new SOTA achieved in structured tabular domain
+
 hence development from Table2Vec, CNNs, RNNs, GNNs, LSTMs to Transormer based models
 we are evaluating different pre-training paradigms and architectures 
 & how they perform on various down-stream tasks for table understanding as table question-answering, cell filling, entity linking etc.
