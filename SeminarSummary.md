@@ -14,6 +14,7 @@ we are evaluating different pre-training paradigms and architectures
 ## Introduction
 same stuff as abstract but more sources
 and outlook on the results and approaches
+potential challenges
 
 ## Preliminaries? 
 why structured data difficult
@@ -31,11 +32,15 @@ TURL
 TABERT
 TABBIE
 TAPAS
+TUTA
 
 we only analyse transformer-based 
 
 ### Input Embedding
 1)TURL
+- linearize table content & compute embedding for each token and entity
+- token representation: x_t = w + t + p; w word embedding, t type embedding, p position embedding 
+- entity representation: x_e = LINEAR(e_e, e_m) + t_e; e_e learned entity embedding, t_e type embedding, e_m entity mention embedding (mean of word embeddings)  
 
 2) TaBERT:
 - linearize table content  (Column name | Column type | Cell value; [SEP] symbol)
