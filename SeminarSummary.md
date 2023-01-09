@@ -37,7 +37,7 @@ TUTA
 we only analyse transformer-based 
 
 ### Input Embedding
-1)TURL
+1) TURL
 - linearize table content & compute embedding for each token and entity
 - token representation: x_t = w + t + p; w word embedding, t type embedding, p position embedding 
 - entity representation: x_e = LINEAR(e_e, e_m) + t_e; e_e learned entity embedding, t_e type embedding, e_m entity mention embedding (mean of word embeddings)  
@@ -54,7 +54,7 @@ we only analyse transformer-based
 
 
 ### Encoder Decoder Architecture
-1)TURL:
+1) TURL:
 - embedding layer
 - N stacked structure-aware transformers using Visibility Matrix to model row-column structure
 - projection layer
@@ -75,7 +75,7 @@ we only analyse transformer-based
 - MER (Masked Entity Recovery) objective: -> learn factual knowledge; sometimes keep Entity Mention -> learn connections between words and entities
 - MLM (Masked Language Model) from BERT
 
-2)TaBERT:
+2) TaBERT:
 - MLM
 - MCP (Masked Column Prediction)
 - CVR (Cell Value Recovery)
@@ -85,7 +85,7 @@ we only analyse transformer-based
 
 ### Downstream Tasks and task-specific Fine-Tuning
 
-1)TURL:
+1) TURL:
 - entity linking
 - col type annotation
 - relation extraction
@@ -93,7 +93,7 @@ we only analyse transformer-based
 - cell filling (same as col pop ?)
 - schema augmentation
 
-2)TaBERT:
+2) TaBERT:
 - WikiTableQuestions & SPIDER
 
 3) TABBIE:
