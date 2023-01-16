@@ -31,7 +31,7 @@ Transformer-based:
 TURL
 TABERT
 TABBIE
-TAPAS
+TAPAS: table QA; extends BERT; weak supervision; trains end-to-end
 TUTA
 
 we only analyse transformer-based 
@@ -52,6 +52,9 @@ we only analyse transformer-based
 - use [CLS] tokens for rows and columns ([CLSROW], [CLSCOL]) 
 - add positional encoding regarding the rows and columns respectively (randomly initialized & learned by pretraining)
 
+4) TAPAS:
+- Sum 6 embeddings of linearized table + NL query: token, position, segment (query or table), column, row, rank (sorting comparable column values, asc) (figure) (+ figure in results showing results with removed respective embedding)
+
 
 ### Encoder Decoder Architecture
 1) TURL:
@@ -70,6 +73,15 @@ we only analyse transformer-based
 - pooling both representations after each layer for contextualized representations
 (Figure)
 
+4) TAPAS:
+- input embedding -> BERT?
+Cell Selection:
+- after hidden layers -> classification layer for cell selection: cells modelled as independent Bernoulli vars;  cell logits are avg of token logits in that cell -> probabilities p_s(c) to select cell c (choose all cells with prob > 0.5 for aggregation)
+- (inductive bias? for columns; column probs?)
+Aggregation Operator selection:
+- linear layer & softmax after final hidden layer of first token -> probability p_a(op)
+
+
 ### Pretraining
 1) TURL:
 - MER (Masked Entity Recovery) objective: -> learn factual knowledge; sometimes keep Entity Mention -> learn connections between words and entities
@@ -83,6 +95,13 @@ we only analyse transformer-based
 3) TABBIE:
 - "Corrupted Cell Detection" from ELEKTRA
 
+4) TAPAS:
+- mainly Wikipedia tables 2.9M ( < 500 cells), Infoboxes? 3.3M (not typical but increase performance); use table caption, acticle tile and description as proxy for the questions in the end task
+- MLM (masking whole words and whole cells beneficial instead of just word pieces)
+- no benefit from second pretraining obj (random table with text detection)
+- restrict word piece sequence length of associated text & table
+
+
 ### Downstream Tasks and task-specific Fine-Tuning
 
 1) TURL:
@@ -93,10 +112,24 @@ we only analyse transformer-based
 - cell filling (same as col pop ?)
 - schema augmentation
 
-2) TaBERT:
+2) TaBERT: 
 - WikiTableQuestions & SPIDER
 
 3) TABBIE:
 - column pop
 - row pop
 - col type prediction
+
+4) TAPAS:
+- Table QA: WikiTQ; SQA; WikiSQL
+- data (x,T,y) ; split target y into (C,s) where C is the set of selected cells and s can be a scalar answer (if exists) 
+- Cell selection: (first column selection?)
+- Scalar answer: has to be aggregated; no explicit supervision for aggregation type; given the cell selection probabilities calculate estimate for every operator then sum them weighted with the normalized probabilities of the operators
+- loss functions for cell & column probabilities, operator probs, returned scalar
+- threshold for choosing only cell selection or aggregation
+- fine-tuning takes 10-20 h where pretraining was 3 days (quite long?)
+- new SOTA or on par but size limitations and cant handle multiple aggragations at once correctly
+
+### Limitations & Outlook:
+- supporting large table input & multiple tables
+- aggragating better datasets (gittables paper)
