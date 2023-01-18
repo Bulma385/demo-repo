@@ -53,7 +53,8 @@ we only analyse transformer-based
 - add positional encoding regarding the rows and columns respectively (randomly initialized & learned by pretraining)
 
 4) TAPAS:
-- Sum 6 embeddings of linearized table + NL query: token, position, segment (query or table), column, row, rank (sorting comparable column values, asc) (figure) (+ figure in results showing results with removed respective embedding)
+- linearize NL query and table content row-wise
+- Sum 6 embeddings for each token: token, position, segment (query or table), column, row, rank (sorting comparable column values, asc) (figure) (+ figure in results showing results with removed respective embedding)
 
 
 ### Encoder Decoder Architecture
