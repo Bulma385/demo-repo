@@ -33,8 +33,13 @@ TABERT
 TABBIE
 TAPAS: table QA; extends BERT; weak supervision; trains end-to-end
 TUTA
+TAPEX: novel pretraining by sql execution over synthetic corpus; combats problem of lacking high quality tabular data; new SOTA WikiTableQuestions, TabFact..
 
-we only analyse transformer-based 
+#### Datasets
+- TURL etc. web tables (bad quality, noizy, need cleaning)
+- (Tabfact)
+- Gittables
+- TaPEx synthesized
 
 ### Input Embedding
 1) TURL
