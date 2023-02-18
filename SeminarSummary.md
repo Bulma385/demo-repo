@@ -33,7 +33,7 @@ TABERT
 TABBIE
 TAPAS: table QA; extends BERT; weak supervision; trains end-to-end
 TUTA
-TAPEX: novel pretraining by sql execution over synthetic corpus; combats problem of lacking high quality tabular data; new SOTA WikiTableQuestions, TabFact..
+TAPEX: novel pretraining by sql execution over synthetic corpus; combats problem of lacking high quality tabular data; new SOTA on TableQA and TableFV (like WikiTableQuestions, TabFact..), train  end-to-end
 
 #### Datasets
 - TURL etc. web tables (bad quality, noizy, need cleaning)
@@ -61,6 +61,9 @@ TAPEX: novel pretraining by sql execution over synthetic corpus; combats problem
 - linearize NL query and table content row-wise
 - Sum 6 embeddings for each token: token, position, segment (query or table), column, row, rank (sorting comparable column values, asc) (figure) (+ figure in results showing results with removed respective embedding)
 
+5) TAPEx:
+- lin. NL and table
+- [HEAD] and [Row index] tokens and vertical bar between cells
 
 ### Encoder Decoder Architecture
 1) TURL:
@@ -107,6 +110,12 @@ Aggregation Operator selection:
 - no benefit from second pretraining obj (random table with text detection)
 - restrict word piece sequence length of associated text & table
 
+5) TAPEX:
+- ONLY sql execution: use off-the-shelf sql executor like MySQL for supervision
+- more efficient, pretraining corpus does not need to be that large as for MLM derivats; end-to-end
+- DATASET: no need for millions of tables; chose 1500 high quality tables from WikiTableQuestions
+- Query Sampling: instantiate SQL templates (Zhong et al., 2020a) -> SELECT num1 WHERE text1
+= val1, for different values
 
 ### Downstream Tasks and task-specific Fine-Tuning
 
