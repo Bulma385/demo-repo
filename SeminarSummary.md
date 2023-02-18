@@ -90,6 +90,8 @@ Cell Selection:
 Aggregation Operator selection:
 - linear layer & softmax after final hidden layer of first token -> probability p_a(op)
 
+5) TAPEX:
+- just uses BART (could be any sequence generating LM) without modifications???????
 
 ### Pretraining
 1) TURL:
