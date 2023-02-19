@@ -91,7 +91,7 @@ Aggregation Operator selection:
 - linear layer & softmax after final hidden layer of first token -> probability p_a(op)
 
 5) TAPEX:
-- just uses BART (could be any sequence generating LM) without modifications???????
+- just uses BART (could be any sequence generating LM) without modifications??????? (needs to be able to generate sequences)
 
 ### Pretraining
 1) TURL:
