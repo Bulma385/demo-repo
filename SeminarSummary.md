@@ -150,3 +150,27 @@ Aggregation Operator selection:
 ### Limitations & Outlook:
 - supporting large table input & multiple tables
 - aggragating better datasets (gittables paper)
+
+
+
+
+Turl: N stacked structure aware transformers 
+
+TABERT: horizontal row-wise transformer -> row-wise encodings -> vertical (column-wise) self-attention -> pooling -> contextualized
+
+TABBIE: first out of context representations; then 2 Transformers row & column individually; pooling after each layer
+
+
+Different architectures to utilize the attentiona mechanism have been proposed. Some approaches direktly use .. e.g. .. and some have extended 
+the architecture.
+
+
+1. direct self attention to linearized content: TAPAS, TAPEX
+
+But one can leverage table structure to build more efficient attention mechanisms.
+
+2. serial row & column attention: tabert
+
+3. parallel row & column attention: tabbie
+
+4. joint row column attention: turl by restricting attention mechanism using visibility matrix
