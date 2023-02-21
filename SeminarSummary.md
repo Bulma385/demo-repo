@@ -157,12 +157,16 @@ Aggregation Operator selection:
 Turl: N stacked structure aware transformers 
 
 TABERT: horizontal row-wise transformer -> row-wise encodings -> vertical (column-wise) self-attention -> pooling -> contextualized
+- one encoder, needs additional decoder for sequence generation or classification layer for downstream task like rest; uses MAPO (Liang et al.,
+2018) as base sematic parser and replaces encoder with TABERTmodel
 
 TABBIE: first out of context representations; then 2 Transformers row & column individually; pooling after each layer
 
 
-Different architectures to utilize the attentiona mechanism have been proposed. Some approaches direktly use .. e.g. .. and some have extended 
-the architecture.
+Transformer based tabular language models all utilize the attention mechanism [Source attention is all you need] to build powerful encoders. Different encoder architectures have been proposed. 
+Some approaches (e.g. TAPAS, TAPEX) direktly apply the same self attention mechanism like BERT and BART to the linearized table content while other models have extended 
+the architecture specifically for tabular data [e.g. TABERT, TABBIE, TURL].
+TABERT presents serial row and column attention. First a transformer computes row-wise representations of the NL text and all rows included in the content snapshot. Then multiple stacked vertical self attention layers enable contextualized representations throughout columsn(rows?). 
 
 
 1. direct self attention to linearized content: TAPAS, TAPEX
@@ -174,3 +178,8 @@ But one can leverage table structure to build more efficient attention mechanism
 3. parallel row & column attention: tabbie
 
 4. joint row column attention: turl by restricting attention mechanism using visibility matrix
+
+
+TAPEX and UnifiedSKG: encoder and decoder architecture for sequence to sequence 
+
+note: since attention mechanism has quadratic complexity (source?) it benefits from small sequence lengths. so multiple attention comps with smaller seq like row or column can be more efficient than inputting whole table (and rather comp tractable)
