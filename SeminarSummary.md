@@ -163,11 +163,11 @@ TABERT: horizontal row-wise transformer -> row-wise encodings -> vertical (colum
 TABBIE: first out of context representations; then 2 Transformers row & column individually; pooling after each layer
 
 
-Transformer based tabular language models all utilize the attention mechanism [Source attention is all you need] to build powerful encoders. Different encoder architectures have been proposed. 
+Transformer based tabular language models all utilize the attention mechanism [Source attention is all you need [Vaswani et al., 2017]] to build powerful encoders. Different encoder architectures have been proposed. 
 Some approaches (e.g. TAPAS, TAPEX) direktly apply the same self attention mechanism like BERT and BART to the linearized table content while other models have extended 
 the architecture specifically for tabular data [e.g. TABERT, TABBIE, TURL].
 TABERT presents serial row and column attention. First a transformer computes row-wise representations of the NL text and all rows included in the content snapshot. Then multiple stacked vertical self attention layers enable contextualized representations throughout columsn(rows?). 
-
+TURL applies self attention to the input sequence restricting the elements to only aggregate information about structurally related elements. Precisely they incoporate the binary visibility matrix into the attention computations to nullify the effects of non related elements. TABBIE first calculates out-of-context cell representations using a fixed pre-trained BERT model. For contextualized representations two structure-aware transformers work in parallel. The tranformers sererately compute row and column representations respectively. Both calculate representations independent from another and after each layer their representations are combined by pooling operations. 
 
 1. direct self attention to linearized content: TAPAS, TAPEX
 
@@ -183,3 +183,14 @@ But one can leverage table structure to build more efficient attention mechanism
 TAPEX and UnifiedSKG: encoder and decoder architecture for sequence to sequence 
 
 note: since attention mechanism has quadratic complexity (source?) it benefits from small sequence lengths. so multiple attention comps with smaller seq like row or column can be more efficient than inputting whole table (and rather comp tractable)
+
+
+additional modules following the encoder depend on the downstream task. for some applications like.. simple classification layers are sufficient. concrete examples and how they were implemented 
+sequence generating models need decoder -> eg tapex QA usw
+but QA also solved by tapas in a classification like manner
+
+
+
+"BERT
+has been shown to encode some degree of numeracy (Wallace et al., 2019), which helps represent
+cells with numerical content"
