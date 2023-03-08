@@ -1,16 +1,24 @@
 # Introduction
 ## Challenges
 - language models 1dim, table 2 dim structure
-- get well annotated data --> Motivation for Pre-Training
+- get well annotated data
+
+maybe one example for reasoning over multiple cells in different row-colunms
+
+--> Motivation for Input Embedding (needs to capture structural information)
+--> Motivation for Architecture (needs to be able to contextualize)
+--> Motivation for PreTraining
 
 # Main Part
 
 ## Models
+- TURL
+- TAPAS
 - TaBERT
 - TABBIE
 - TAPEX 
 
-## Overview Tasks & Models
+### Overview Tasks & Models
 - Table only taks
 - Table + Text
 
@@ -18,19 +26,18 @@
 
 ### Example Table + Text Task (QA)
 
---> Motivation for Input Embedding (needs to capture structural information)
---> Motivation for Architecture (needs to be able to contextualize)
-
-#### Model Differences
+### Model Differences
 - Input Embedding
 - Model Architecture
 - Pre-Training objectives
 
-### Serialization 
-- Full linearization
-- only substructure lin.
+### Tabular Input Handling
+- linearization
+- additional embeddings
 
-TABBIE Figure 2
+TaBERT Figure 1 -> full example: content snapshot - row encodings - utterance & column encodings
+
+TABBIE Figure 2 -> 2 transformers for rows - columns resp
 
 #### Example FULL 
 - TURL, TAPAS, TAPEX
